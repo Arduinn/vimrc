@@ -1,46 +1,69 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-set number
+set nocompatible              
+filetype off                  
 
-" set the runtime path to include Vundle and initialize
+" Lines numbers
+set number
+set clipboard=unnamed
+
+syntax on
+set expandtab ts=2 sw=2 ai
+
+" Directory to vim
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
+Plugin 'scrooloose/nerdtree' 
+Plugin 'Raimondi/delimitMate' 
+Plugin 'yggdroot/indentline' 
+Plugin 'tmhedberg/SimpylFold' 
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'ervandew/supertab' 
+Plugin 'davidhalter/jedi-vim'
+Plugin 'mattn/emmet-vim'
 Plugin 'tpope/vim-fugitive'
-" plugin from http://vim-scripts.org/vim/scripts.html
-" Plugin 'L9'
-" Git plugin not hosted on GitHub
 Plugin 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (i.e. when working on your own plugin)
-Plugin 'file:///home/gmarik/path/to/plugin'
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-" Plugin 'ascenator/L9', {'name': 'newL9'}
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tomtom/tlib_vim'
+Plugin 'garbas/vim-snipmate'
+Plugin 'honza/vim-snippets'
+Plugin 'vim-css3-syntax'
+Plugin 'flazz/vim-colorschemes'
+Plugin 'vim-auto-save'
 
-" All of your Plugins must be added before the following line
+let g:auto_save = 1
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
-syntax on
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
+" Selecting Color
+colorscheme Monokai
+
+" Help commands!!!
+
 " :PluginList       - lists configured plugins
 " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
 " :PluginSearch foo - searches for foo; append `!` to refresh local cache
 " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
 "
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+
+filetype plugin on
+
+" Activating autocomplete
+set omnifunc=syntaxcomplete#Complete
+
+" Setting highlights
+highlight Normal ctermbg=Black
+highlight NonText ctermbg=Black
+
+highlight Cursor   guifg=white  guibg=black
+highlight iCursor  guifg=white  guibg=black
+
+" Cursor shape (insert => vertical line)
+set guicursor=n-v-c:block-Cursor
+"set guicursor+=i:ver30-iCursor
+
+map <F2> :NERDTreeToggle<CR>
